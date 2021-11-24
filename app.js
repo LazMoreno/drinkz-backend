@@ -4,9 +4,11 @@ const mongoose = require("mongoose");
 
 const app = express();
 
+require('dotenv').config();
+
 //db connection
 mongoose
-  .connect("mongodb://localhost/drinkz")
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log("Connected to DB..."))
   .catch(() => console.log("Couldn't connect to db..."));
 
@@ -20,5 +22,5 @@ app.get("/", (req, res) => {
 });
 
 //port & listening
-const port = 5000;
+const port = process.env.PORT;
 app.listen(port, () => console.log("Server running..."));
