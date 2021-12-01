@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-require('dotenv').config();
+require("dotenv").config();
 
 //db connection
 mongoose
@@ -17,9 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 //routes
-app.get("/", (req, res) => {
-  return res.json({ drink: "margarita" });
-});
+app.use("/api/v1/expenses", require("./routes/expense"));
 
 //port & listening
 const port = process.env.PORT;
